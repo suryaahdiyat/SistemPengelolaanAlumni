@@ -50,6 +50,7 @@ class MahasiswaSheet implements FromCollection, WithHeadings, WithTitle
     public function headings(): array
     {
         return [
+            'id',
             'Nama',
             'NIM',
             // 'angkatan',

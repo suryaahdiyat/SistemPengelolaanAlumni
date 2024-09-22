@@ -25,6 +25,7 @@ class StaseExport implements FromCollection, WithHeadings
      */
     public function headings(): array{
         return [
+            'id',
             'Nama Stase',
             'Kode Stase',
             'Durasi',
