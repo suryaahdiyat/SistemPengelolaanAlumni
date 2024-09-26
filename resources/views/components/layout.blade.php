@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
         scrollBtn.classList.add("hidden");
         }
         };
-        
+
         // Fungsi untuk scroll ke atas
         function scrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });

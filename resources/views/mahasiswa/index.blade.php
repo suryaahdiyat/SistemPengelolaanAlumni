@@ -1,5 +1,5 @@
 <x-adminLay>
-    @if(session()->has('success'))    
+    @if(session()->has('success'))
     <div role="alert" class="p-4 bg-white border border-gray-100 rounded-xl">
         <div class="flex items-start gap-4">
             <span class="text-green-600">
@@ -9,16 +9,16 @@
                         d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </span>
-    
+
             <div class="flex-1">
                 <strong class="block font-medium text-gray-900"> Perubahan disimpan </strong>
-    
+
                 <p class="mt-1 text-sm text-gray-700">{{ session('success') }}</p>
             </div>
-    
+
             <a href="" class="text-gray-500 transition hover:text-gray-600">
                 <span class="sr-only">Dismiss popup</span>
-    
+
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -69,20 +69,23 @@
                 <th class="px-1 py-2 text-xs border">Angkatan</th>
                 <th class="px-1 py-2 text-xs border">Kelompok</th>
                 @auth
-                    
+
                 <th class="px-1 py-2 text-xs border">Aksi</th>
                 @endauth
             </tr>
         </thead>
         <tbody>
-            @foreach ($mhs as $m)            
+            @php
+                $no = ($mhs->currentPage() - 1) * $mhs->perPage() + 1;
+            @endphp
+            @foreach ($mhs as $m)
             <tr>
-                <td class="px-1 py-2 text-xs border">{{ $loop->iteration }}</td>
+                <td class="px-1 py-2 text-xs border">{{ $no++ }}</td>
                 <td class="px-1 py-2 text-xs border">{{ $m->nama }}</td>
                 <td class="px-1 py-2 text-xs border">{{ $m->nim }}</td>
                 <td class="px-1 py-2 text-xs border">{{ $m->angkatan }}</td>
                 <td class="px-1 py-2 text-xs border">{{ $m->kelompok }}</td>
-                @auth    
+                @auth
                 <td class="px-1 py-2 text-xs border">
                     <div>
                         <a href="/mahasiswa/{{ $m->nim }}/edit" class="underline duration-150 text-cyan-500 hover:text-cyan-700">ubah</a>
