@@ -1,22 +1,20 @@
 <x-layout>
-    <section class="bg-white">
+    <section class="bg-slate-100">
         <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
-                <img alt=""
-                    {{-- src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" --}}
-                    src="{{ asset('img/fk_kedokteran_ulm.jpg') }}"
+                <img alt="" {{-- src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" --}} src="{{ asset('img/fk_kedokteran_ulm.jpg') }}"
                     class="absolute inset-0 object-cover w-full h-full" />
             </aside>
 
             <main
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
-                    @if(session()->has('loginError'))
-                    {{-- <p class="py-3 mb-4 text-center border rounded border-rose-500 bg-rose-200">{{ session('loginError') }}
+                    @if (session()->has('loginError'))
+                        {{-- <p class="py-3 mb-4 text-center border rounded border-rose-500 bg-rose-200">{{ session('loginError') }}
                     </p> --}}
-                    <script>
-                        alert('Gagal login')
-                    </script>
+                        <script>
+                            alert('Gagal login')
+                        </script>
                     @endif
                     <a class="block text-blue-600" href="#">
                         <span class="sr-only">Home</span>
@@ -37,20 +35,21 @@
                             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
 
                             <input type="email" id="Email" name="email"
-                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" autofocus value="{{ old('email') }}"/>
-                                @error('email')
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-md"
+                                autofocus value="{{ old('email') }}" />
+                            @error('email')
                                 <p class="mt-1 text-xs text-rose-500">{{ $message }}*</p>
-                                @enderror
+                            @enderror
                         </div>
 
                         <div class="col-span-6">
                             <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
 
                             <input type="password" id="Password" name="password"
-                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" />
-                                @error('password')
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-md" />
+                            @error('password')
                                 <p class="mt-1 text-xs text-rose-500">{{ $message }}*</p>
-                                @enderror
+                            @enderror
                         </div>
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
