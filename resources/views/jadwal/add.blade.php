@@ -13,11 +13,12 @@
 
                     <span
                         class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-                        NIM Mahasiswa
+                        NIM Mahasiswa 123
                     </span>
                 </label>
                 <input type="hidden" id="mahasiswa_id" name="mahasiswa_id">
-                <button id="btn_mhs" class="col-span-1 text-xs border rounded-md md:text-base">validasi</button>
+                <button id="btn_mhs"
+                    class="col-span-1 text-xs text-white border rounded-md md:text-base bg-cyan-500 hover:bg-cyan-700">validasi</button>
                 @error('mahasiswa_id')
                     <p class="mt-1 text-xs text-rose-500">Data Mahasiswa tidak boleh kosong*</p>
                 @enderror
@@ -50,7 +51,7 @@
                     <input type="text" id="kelompok"
                         class="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
                         placeholder="Kelompok" value="" disabled />
-            
+
                     <span
                         class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                         Kelompok
@@ -71,9 +72,10 @@
                     </span>
                 </label>
                 <input type="hidden" id="stase_id" name="stase_id">
-                <button id="btn_stase" class="col-span-1 text-xs border rounded-md md:text-base">validasi</button>
+                <button id="btn_stase"
+                    class="col-span-1 text-xs text-white border rounded-md md:text-base bg-cyan-500 hover:bg-cyan-700">validasi</button>
                 @error('stase_id')
-                <p class="mt-1 text-xs text-rose-500">Data Stase tidak boleh kosong*</p>
+                    <p class="mt-1 text-xs text-rose-500">Data Stase tidak boleh kosong*</p>
                 @enderror
                 <label for="is_valid_stase" class="flex items-start gap-1 cursor-pointer md:gap-4">
                     <div class="">
@@ -104,7 +106,7 @@
                     <input type="text" id="durasi"
                         class="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
                         placeholder="Durasi" value="" disabled />
-            
+
                     <span
                         class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
                         Durasi
@@ -120,9 +122,9 @@
         $(document).ready(function() {
             $('#btn_mhs').on('click', function(e) {
                 e.preventDefault();
-    
+
                 let nim = $('#data_mhs').val();
-    
+
                 $.ajax({
                     url: "{{ route('jadwal.validateMhs') }}",
                     type: "POST",
@@ -134,14 +136,14 @@
                         if (response.status === 'success') {
                             // Set checkbox to checked
                             $('#is_valid_mhs').prop('checked', true);
-                            
+
                             // Populate the disabled inputs with the student's data
                             $('#nama').val(response.data.nama);
                             $('#kelompok').val(response.data.kelompok);
                             $('#mahasiswa_id').val(response.data.id);
                         } else {
                             $('#is_valid_mhs').prop('checked', false);
-                            
+
                             // Populate the disabled inputs with the student's data
                             $('#nama').val("");
                             $('#kelompok').val("");
@@ -156,9 +158,9 @@
             });
             $('#btn_stase').on('click', function(e) {
                 e.preventDefault();
-    
+
                 let kode_stase = $('#data_stase').val();
-    
+
                 $.ajax({
                     url: "{{ route('jadwal.validateStase') }}",
                     type: "POST",
@@ -170,14 +172,14 @@
                         if (response.status === 'success') {
                             // Set checkbox to checked
                             $('#is_valid_stase').prop('checked', true);
-                            
+
                             // Populate the disabled inputs with the student's data
                             $('#stase_id').val(response.data.id);
                             $('#nama_stase').val(response.data.nama_stase);
                             $('#durasi').val(response.data.durasi);
                         } else {
                             $('#is_valid_stase').prop('checked', false);
-                            
+
                             // Populate the disabled inputs with the student's data
                             $('#stase_id').val("");
                             $('#nama_stase').val("");
